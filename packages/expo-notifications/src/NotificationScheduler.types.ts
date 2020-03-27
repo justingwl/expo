@@ -1,5 +1,5 @@
 // ISO8601 calendar pattern-matching
-export interface NativeCalendarTrigger {
+export interface CalendarTriggerInput {
   type: 'calendar';
   repeats?: boolean;
   value: {
@@ -19,21 +19,40 @@ export interface NativeCalendarTrigger {
   };
 }
 
-export interface NativeTimeIntervalTrigger {
-  type: 'interval';
-  repeats?: boolean;
-  value: number;
+export interface TimeIntervalTriggerInput {
+  type: 'timeInterval';
+  repeats: boolean;
+  seconds: number;
 }
 
-export type NativeDateTrigger = {
+export interface DateTriggerInput {
   type: 'date';
-  value: number; // seconds since 1970
-};
+  timestamp: number; // seconds since 1970
+}
 
-export type IosNotificationTrigger =
+export type NotificationTriggerInput =
   | null
-  | NativeTimeIntervalTrigger
-  | NativeDateTrigger
-  | NativeCalendarTrigger;
-export type AndroidNotificationTrigger = NativeTimeIntervalTrigger | NativeDateTrigger | null;
-export type NativeNotificationTrigger = IosNotificationTrigger | AndroidNotificationTrigger;
+  | DateTriggerInput
+  | CalendarTriggerInput
+  | TimeIntervalTriggerInput;
+
+export interface NotificationRequestInput {
+  title?: string;
+  subtitle?: string;
+  body?: string;
+  data?: { [key: string]: unknown };
+  badge?: number;
+  sound?: boolean | string;
+  launchImageName?: string;
+  vibrate?: number[];
+  priority?: string;
+  attachments?: {
+    url: string;
+    identifier?: string;
+
+    typeHint?: string;
+    hideThumbnail?: boolean;
+    thumbnailClipArea?: { x: number; y: number; width: number; height: number };
+    thumbnailTime?: number;
+  }[];
+}

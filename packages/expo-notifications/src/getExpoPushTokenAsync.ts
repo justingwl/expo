@@ -3,14 +3,10 @@ import * as Application from 'expo-application';
 import Constants from 'expo-constants';
 
 import InstallationIdProvider from './InstallationIdProvider';
-import getDevicePushTokenAsync, { DevicePushToken } from './getDevicePushTokenAsync';
+import { DevicePushToken, ExpoPushToken } from './Tokens.types';
+import getDevicePushTokenAsync from './getDevicePushTokenAsync';
 
 const productionBaseUrl = 'https://exp.host/--/api/v2/';
-
-export interface ExpoPushToken {
-  type: 'expo';
-  data: string;
-}
 
 interface Options {
   // Endpoint URL override

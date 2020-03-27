@@ -1,5 +1,5 @@
 import { CodedError } from '@unimodules/core';
-import { Notification } from './NotificationsEmitter.types';
+import { Notification } from './Notifications.types';
 import { BaseNotificationBehavior, IosNotificationBehavior, AndroidNotificationBehavior } from './NotificationsHandlerModule';
 export declare class NotificationTimeoutError extends CodedError {
     info: {

@@ -1,6 +1,6 @@
 import { EventEmitter, Subscription, CodedError, Platform } from '@unimodules/core';
 
-import { Notification } from './NotificationsEmitter.types';
+import { Notification } from './Notifications.types';
 import NotificationsHandlerModule, {
   BaseNotificationBehavior,
   IosNotificationBehavior,
